@@ -197,3 +197,36 @@ AddrSpace::RestoreState ()
     machine->pageTable = pageTable;
     machine->pageTableSize = numPages;
 }
+
+#ifdef CHANGED
+
+int
+AddrSpace::AllocateUserStack (int pos)
+{
+    DEBUG ('h', "numPages %d - PageSize %d\n", numPages, PageSize);
+    return (numPages * PageSize - pos * 256) - 16;
+}
+
+static void
+ReadAtVirtual (OpenFile *executable, int virtualaddr, int numBytes, int position, TranslationEntry *pageTable, unsigned numPages)
+{
+    TranslationEntry *tmpTable = machine->pageTable;
+    unsigned tmpNumPages = machine->pageTableSize;
+
+    char *buffer = new char[numBytes];
+    executable->ReadAt(buffer, numBytes, position);
+
+    machine->pageTable = pageTable;
+    machine->pageTableSize = numPages;
+    int value;
+    for(int i = 0; i < numBytes; i++)
+    {
+        value = (int) buffer[i];
+        machine->WriteMem (virtualaddr + i, 1, value);
+    }
+
+    machine->pageTable = tmpTable;
+    machine->pageTableSize = tmpNumPages;
+}
+
+#endif // CHANGED
