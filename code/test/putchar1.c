@@ -4,7 +4,7 @@ void print(char c, int n)
 {
 	int i;
 #if 1
-	for (i = 0; i < n; i++)
+	for(i = 0; i < n; i++)
 	{
 		PutChar(c + i);
 	}
@@ -15,5 +15,5 @@ void print(char c, int n)
 int main()
 {
 	print('a', 4);
-	Halt();
+	return 0;
 }

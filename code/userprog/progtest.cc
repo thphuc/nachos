@@ -110,7 +110,7 @@ ConsoleTest (const char *in, const char *out)
 #endif
       if (ch == 'q') {
 #ifdef CHANGED
-          printf ("Au revoir !\n");
+          printf ("Goodbye\n");
 #endif
 	      printf ("Nothing more, bye!\n");
 	      break;		// if q, quit
