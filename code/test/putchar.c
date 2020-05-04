@@ -26,9 +26,9 @@ int main()
 	// GetString(s,30);
 	// PutString(s);
 
-	n = GetInt();
-	PutInt(n);
-	PutChar('\n');
+	// n = GetInt();
+	// PutInt(n);
+	// PutChar('\n');
 
 	//You can test 'echo $?' in a terminal to see the '2' value
 	Exit(2);
