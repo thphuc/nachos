@@ -35,6 +35,7 @@ SynchDisk *synchDisk;
 Machine *machine;		// user program memory and registers
 #ifdef CHANGED
 SynchConsole *synchconsole;
+PageProvider *pageprovider;
 int
 copyStringFromMachine(int from, char *to, unsigned size)
 {
