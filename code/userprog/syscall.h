@@ -31,15 +31,19 @@
 #define SC_Close	8
 #define SC_Fork		9
 #define SC_Yield	10
+
 #ifdef CHANGED
-#define SC_PutChar   11
-#define SC_PutString 12
-#define SC_GetChar   13
-#define SC_GetString 14
-#define SC_PutInt    15
-#define SC_GetInt    16
+
+#define SC_PutChar  11
+#define SC_PutString  12
+#define SC_GetChar  13
+#define SC_GetString  14
+#define SC_PutInt   15
+#define SC_GetInt   16
 #define SC_ThreadCreate 17
-#define SC_ThreadExit   18
+#define SC_ThreadExit 18
+#define SC_ForkExec 19
+
 #endif // CHANGED
 
 #ifdef IN_USER_MODE
@@ -141,15 +145,24 @@ void Fork (void (*func) ());
 void Yield ();
 
 #ifdef CHANGED
-void PutChar(char c);
-int GetChar();
-void PutString(char s[]);
-void GetString(char *s, int n);
-void PutInt(int n);
-int GetInt();
-int ThreadCreate(void f(void *arg), void *arg);
-void ThreadExit(void);
-#endif CHANGED
+
+/* fonctions utilisateur Nachos
+ */
+void PutChar (char c);
+int GetChar ();
+
+void PutString (char *s);
+void GetString (char *s, int n);
+
+void PutInt (int n);
+void GetInt (int *n);
+
+int ThreadCreate (void f (void *arg), void *arg);
+void ThreadExit (void);
+
+int ForkExec(const char *s);
+
+#endif // CHANGED
 
 #endif // IN_USER_MODE
 
