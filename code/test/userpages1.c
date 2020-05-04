@@ -6,7 +6,7 @@ const int N = 10; // Choose it large enough!
 
 void puts(const char *s) {
   const char *p; 
-  for (p = s; *p != ’\0’; p++) 
+  for (p = s; *p != '\0'; p++) 
   PutChar(*p); 
 }
 
